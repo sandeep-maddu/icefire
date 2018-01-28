@@ -1,0 +1,31 @@
+<strong>House name:</strong> {{house.name}}<br>
+<strong>ID:</strong> {{house.url|extractid}}<br>
+<strong>Region:</strong> {{house.region}}<br>
+<strong>CoatOfArms:</strong> {{house.coatOfArms}}<br>
+<strong>Words:</strong> {{house.words}}<br>
+<strong>Titles:</strong><br>
+<ul style="list-style: none;">
+    <li *ngFor="let titles of house.titles">{{title}}</li>
+  </ul>
+<strong>Seats:</strong>
+ <ul style="list-style: none;">
+      <li *ngFor="let seat of house.seats">{{seat}}</li>
+    </ul>
+<strong>CurrentLord:</strong><a (click)="onSelectCharacter(house.currentLord)">Character #ID:{{house.currentLord|extractid}}</a><br>
+<strong>Heir:</strong><a (click)="onSelectCharacter(house.heir)">Character #ID:{{house.heir|extractid}}</a><br>
+<strong>Overlord:</strong><a (click)="onSelectCharacter(house.overlord)">Character #ID:{{house.overlord|extractid}}</a><br>
+<strong>Founded:</strong> {{house.founded}}<br>
+<strong>Founder:</strong><a (click)="onSelectCharacter(house.founder)"> Character #ID:{{house.founder|extractid}}<br>
+<strong>DiedOut:</strong> {{house.diedOut}}<br>
+<strong>Ancestral Weapons:</strong>
+ <ul style="list-style: none;">
+      <li *ngFor="let weapon of house.ancestralWeapons">{{weapon}}</li>
+    </ul>
+<strong>Cadet branches:</strong>
+ <div class="list-group">
+   <a class="list-group-item list-group-item-success" *ngFor="let branch of house.cadetBranches" (click)="onSelectHouse(branch)">House #ID:{{branch|extractid}}</a>
+</div>
+<strong>Sworn members:</strong>
+ <div class="list-group">
+   <a class="list-group-item list-group-item-success" *ngFor="let member of house.swornMembers" (click)="onSelectCharacter(member)">Character #ID:{{member|extractid}}</a>
+</div>

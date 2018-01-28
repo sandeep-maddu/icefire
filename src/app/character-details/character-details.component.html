@@ -1,0 +1,37 @@
+<strong>Character name:</strong> {{character.name}}<br>
+<strong>ID:</strong> {{character.url|extractid}}<br>
+<strong>Gender:</strong> {{character.gender}}<br>
+<strong>Culture:</strong>{{character.culture}}<br>
+<strong>Born:</strong>{{character.born}}<br>
+<strong>Died:</strong>{{character.died}}<br>
+<strong>Titles:</strong>
+<ul style="list-style: none;">
+    <li *ngFor="let titles of character.titles">{{title}}</li>
+  </ul>
+<strong>Aliases:</strong>
+<ul style="list-style: none;">
+    <li *ngFor="let alias of character.aliases">{{alias}}</li>
+  </ul>
+<strong>Father:</strong><a (click)="onSelectCharacter(character.father)">Character #ID:{{character.father|extractid}}</a><br>
+<strong>Mother:</strong><a (click)="onSelectCharacter(character.mother)">Character #ID:{{character.mother|extractid}}</a><br>
+<strong>Spouse:</strong><a (click)="onSelectCharacter(character.spouse)">Character #ID:{{character.spouse|extractid}}</a><br>
+<strong>Allegiances:</strong>
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" *ngFor="let allegiance of character.allegiances" (click)="onSelectHouse(allegiance)">Character #ID: {{allegiance|extractid}}</a>
+  </div>
+<strong>Books:</strong>
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" *ngFor="let book of character.books" (click)="onSelectBook(book)">Book #ID: {{book|extractid}}</a>
+  </div>
+<strong>povBooks:</strong>
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" *ngFor="let povBook of character.povBooks" (click)="onSelectBook(povBook)">Book #ID: {{povBook|extractid}}</a>
+  </div>
+<strong>tvSeries:</strong>
+<ul style="list-style: none;">
+    <li *ngFor="let series of character.tvSeries">{{series}}</li>
+  </ul>
+<strong>playedBy:</strong>
+<ul style="list-style: none;">
+    <li *ngFor="let played of character.playedBy">{{played}}</li>
+  </ul>

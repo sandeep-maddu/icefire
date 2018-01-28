@@ -1,0 +1,20 @@
+<strong>Book name:</strong> {{book.name}}<br>
+<strong>ID:</strong> {{book.url|extractid}}<br>
+<strong>ISBN:</strong> {{book.isbn}}<br>
+<strong>Authors:</strong>
+<ul style="list-style: none;">
+    <li *ngFor="let author of book.authors">{{author}}</li>
+  </ul>
+<strong>Number of pages:</strong> {{book.numberOfPages}}<br>
+<strong>Publisher:</strong> {{book.publisher}}<br>
+<strong>Country:</strong> {{book.country}}<br>
+<strong>Media type:</strong> {{book.mediaType}}<br>
+<strong>Released:</strong> {{book.released}}<br>
+<strong>Characters:</strong> <br>
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" *ngFor="let character of book.characters" (click)="onSelectCharacter(character)">Character #ID: {{character|extractid}} </a><br>
+  </div>
+<strong>povCharacters:</strong><br>
+<div class="list-group">
+    <a class="list-group-item list-group-item-success" *ngFor="let character of book.povCharacters" (click)="onSelectCharacter(character)">{{character|extractid}}</a><br>
+  </div>

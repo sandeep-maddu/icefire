@@ -1,0 +1,79 @@
+<!-- <ng-progress [thick]="true" [positionUsing]="'translate3d'"></ng-progress> -->
+
+<div class="row">
+
+
+  <div class="col-md-2">
+
+  <app-books></app-books>
+  <input type="text" [(ngModel)]="booksearch" placeholder="filter by name"><br>
+
+  <!-- filter by author: <select type="text" [(ngModel)]="authorsearch">
+    <ng-template let-obs ngFor [ngForOf]="bookslist">
+      <ng-template let-book ngFor [ngForOf]="obs.json()">
+    <option *ngFor="let author of book.authors | bookpipe:authorsearch" [ngValue]="author">{{author}}</option>
+  </ng-template>
+  </ng-template>
+
+    </select> -->
+
+  </div>
+
+  <div class="col-md-2">
+
+  <app-characters></app-characters>
+  <input type="text" [(ngModel)]="charactersearch" placeholder="filter by character"><br>
+  </div>
+
+  <div class="col-md-2">
+
+  <app-houses></app-houses>
+  <input type="text" [(ngModel)]="housesearch" placeholder="filter by house"><br>
+  </div>
+
+
+    <div class="col-md-6">
+
+  <h1>Results</h1>
+    </div>
+
+  </div>
+
+<div class="row">
+  <div class="col-md-2">
+    <ul style="list-style: none;" class="list-group">
+      <ng-template let-obs ngFor [ngForOf]="bookslist">
+<div class="list-group">
+    <a class="list-group-item list-group-item-info" *ngFor="let book of obs.json()  | bookpipe:booksearch:authorsearch | sort" [class.selected]="book===selectedBook" (click)=onSelectBook(book)>{{book.name}}</a>
+</div>
+    </ng-template>
+    </ul>
+</div>
+
+<div class="col-md-2">
+  <ul style="list-style: none;">
+  <ng-template let-obs ngFor [ngForOf]="characterslist">
+<div class="list-group">
+  <a class="list-group-item list-group-item-warning" *ngFor="let character of obs.json() | characterpipe:charactersearch | sort | notblank " [class.selected]="character===selectedCharacter" (click)=onSelectCharacter(character)>{{character.name}}</a>
+</div>
+</ng-template>
+  </ul>
+</div>
+
+<div class="col-md-2">
+  <ul style="list-style: none;">
+    <ng-template let-obs ngFor [ngForOf]="houseslist">
+<div class="list-group">
+  <a class="list-group-item list-group-item-danger" *ngFor="let house of obs.json()  | housepipe:housesearch | sort" [class.selected]="house===selectedHouse" (click)=onSelectHouse(house)>{{house.name}}</a>
+</div>
+  </ng-template>
+  </ul>
+</div>
+
+<div id="bordered-div" class="col-md-6" align="left">
+  <app-book-details (changeInCharacter)="changedCharacter($event)" *ngIf="selectedBook && !selectedCharacter && !selectedHouse" [book]="selectedBook"></app-book-details>
+  <app-character-details (changeInBook)="changedBook($event)" (changeInHouse)="changedHouse($event)" (changeInCharacter)="changedCharacter($event)" *ngIf="selectedCharacter && !selectedBook && !selectedHouse" [character]="selectedCharacter"></app-character-details>
+  <app-house-details (changeInCharacter)="changedCharacter($event)" (changeInHouse)="changedHouse($event)" *ngIf="selectedHouse && !selectedCharacter && !selectedBook" [house]="selectedHouse"></app-house-details>
+</div>
+
+</div>

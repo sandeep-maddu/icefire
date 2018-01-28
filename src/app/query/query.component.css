@@ -1,0 +1,11 @@
+.selected {
+	background-color: #D0EFFC  ;
+}
+
+.list-group{
+      display:inline-block;
+ }
+
+#bordered-div {
+	border:1px solid black;
+}

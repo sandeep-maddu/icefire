@@ -1,0 +1,20 @@
+Book name: {{book.name}}<br>
+url: {{book.url}}<br>
+ISBN: {{book.isbn}}<br>
+Authors:
+<ul style="list-style: none;">
+    <li *ngFor="let author of book.authors">{{author}}</li>
+  </ul>
+Number of pages: {{book.numberOfPages}}<br>
+Publisher: {{book.publisher}}<br>
+Country: {{book.country}}<br>
+Media type: {{book.mediaType}}<br>
+Released: {{book.released}}<br>
+Characters: <br>
+<ul style="list-style: none;">
+    <a [href]=character *ngFor="let character of book.characters">{{character}} </a><br>
+  </ul>
+povCharacters:<br>
+<ul style="list-style: none;">
+    <li *ngFor="let character of book.povCharacters">{{character}}</li>
+  </ul>
